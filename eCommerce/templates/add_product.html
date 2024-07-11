@@ -1,15 +1,22 @@
-<fieldset class="form-group">
-    <legend class="border-bottom mb-4">Add Products</legend>
-    <form action="" method="post">
+
+<form action="" method="post" enctype="multipart/form-data">
+
         {{ form.hidden_tag() }}
-        {{ form.name.label(class="form-control-label") }}
-        <div class=" form-group ">{{ form.name(class='form-control form-control-lg') }}</div>
-        {{ form.price.label(class="form-control-label") }}
-        <div class=" form-group ">{{ form.price(class='form-control form-control-lg') }}</div>
-        {{ form.stock.label(class="form-control-label") }}
-        <div class=" form-group ">{{ form.stock(class='form-control form-control-lg') }}</div>
-        {{ form.picture.label(class="form-control-label") }}
-        <div class=" form-group ">{{ form.picture(class='form-control form-control-lg') }}</div>
-        <div class=" form-group ">{{ form.submit(class='btn btn-outline-info') }}</div>
-    </form>
-</fieldset>
+        <div class=" form-group ">
+            {{ form.name.label(class="form-control-label") }}
+            {{ form.name(class='form-control form-control-lg') }}
+        </div>
+        <div class=" form-group ">
+            {{ form.price.label(class="form-control-label") }}
+            {{ form.price(class='form-control form-control-lg') }}
+        </div>
+        <div class=" form-group ">
+            {{ form.stock.label(class="form-control-label") }}
+            {{ form.stock(class='form-control form-control-lg') }}
+        </div>
+        <div class=" form-group ">
+            {{ form.picture.label() }}
+            {{ form.picture(class="form-control-file") }}
+        </div>
+    <div class=" form-group ">{{ form.submit(class='btn btn-outline-info') }}</div>
+</form>

@@ -10,7 +10,7 @@ class Admin(db.Model):
 
 class Product(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
-    name: Mapped[str] = mapped_column(String(20), unique=True, nullable=False)
+    name: Mapped[str] = mapped_column(String(20), nullable=False)
     price: Mapped[float] = mapped_column(Float, nullable=False)
     picture: Mapped[str] = mapped_column(String(25),nullable=False, default='default.jpg')
     stock: Mapped[int] = mapped_column(Integer, nullable=False)

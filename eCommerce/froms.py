@@ -1,13 +1,13 @@
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired, Length
-from flask_wtf.file import FileField
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import IntegerField, StringField, FloatField, SubmitField
   
 class AddProductForm(FlaskForm):  
-   name = StringField("Product Name", validators=[DataRequired("Please enter product name.")
+   name = StringField("Product Name", validators=[DataRequired()
                                                 ,Length(max=20)])
-   price = FloatField("Product Price",  validators=[DataRequired("Please enter product price.")])
+   price = FloatField("Product Price",  validators=[DataRequired()])
 
-   stock = IntegerField("Quantity",  validators=[DataRequired("How many?. Enter 0 if zero.")])
-   picture = FileField("Insert Image")
+   stock = IntegerField("Quantity",  validators=[DataRequired()])
+   picture = FileField("Insert Image", validators=[FileAllowed( ['jpg', 'png'] )])
    submit = SubmitField("Submit")

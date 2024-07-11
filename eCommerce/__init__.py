@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from eCommerce.froms import AddProductForm
+from eCommerce.utitlities import renameAndSave
 import os
 
 app = Flask(__name__)
@@ -29,16 +30,17 @@ def admin():
     form = AddProductForm()
 
     if form.validate_on_submit():
-        new_product = Product(name=form.name.data, price=form.price.data)
-        if form.stock.data:
-            new_product.stock = form.stock.data
-        #if form.picture.data != Null:
-        #    new_product.stock = form.stock.data
+        new_product = Product(name = form.name.data
+                            , price = form.price.data
+                            , stock = form.stock.data
+                            )
+        if form.picture.data:
+            new_product.picture = renameAndSave(form.picture.data)
+
         db.session.add(new_product)
         db.session.commit()
-        form.name.data = ''
-        form.price.data = ''
-        form.stock.data = ''
 
+        form = AddProductForm(formdata=None)
+        
     return render_template('add_product.html', title='Admin', form=form)
     
