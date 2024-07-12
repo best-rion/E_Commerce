@@ -22,3 +22,8 @@ class AddProductForm(FlaskForm):
    stock = IntegerField("Quantity",  validators=[DataRequired()])
    picture = FileField("Insert Image", validators=[FileAllowed( ['jpg', 'png', 'jpeg'] )])
    submit = SubmitField("Submit")
+
+
+class SearchForm(FlaskForm):  
+   search_term = StringField("Search", validators=[DataRequired(),Length(max=20)])
+   submit = SubmitField("Submit")

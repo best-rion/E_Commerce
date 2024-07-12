@@ -2,9 +2,27 @@
 
 {% block content %}
 
+
 <div class="container">
-    <div class="content-section mt-5 bg-success p-5">
-        
+    <div class="content-section mt-5 bg-light p-5 row">
+
+        <div class="col-lg-8 row">
+            <b class="col-2">ID   </b>    <b class="col-1"> :</b>    <p class="col-9">{{ admin.id }}</p>
+            <b class="col-2">Name </b>    <b class="col-1"> :</b>    <p class="col-9">{{ admin.name }}</p>
+            <b class="col-2">Email</b>    <b class="col-1"> :</b>    <p class="col-9">{{ admin.email }}</p>
+        </div>
+
+        <div class="col-lg-4">
+            <form action="" method="post" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                  {{ form.search_term.label(class="form-label") }}
+                  {{ form.search_term(class="form-control" ) }}
+                </div>
+
+                {{ form.submit(class="btn btn-primary") }}
+              </form>
+        </div>
     </div>
 </div>
 
