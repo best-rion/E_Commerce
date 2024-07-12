@@ -1,5 +1,5 @@
 import secrets
-from flask import url_for, current_app
+from flask import current_app
 
 def renameAndSave(image_file):
     

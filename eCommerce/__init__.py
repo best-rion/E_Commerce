@@ -1,6 +1,5 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-from eCommerce.froms import AddProductForm
 from eCommerce.utitlities import renameAndSave
 import os
 
@@ -13,6 +12,7 @@ db.init_app(app)
 app.config['SECRET_KEY'] = os.urandom(32)
 
 from eCommerce.models import Product
+from eCommerce.froms import AddProductForm
 
 @app.route("/")
 def home():
@@ -30,13 +30,28 @@ def admin():
     form = AddProductForm()
 
     if form.validate_on_submit():
+        
         new_product = Product(name = form.name.data
                             , price = form.price.data
                             , stock = form.stock.data
                             )
         if form.picture.data:
             new_product.picture = renameAndSave(form.picture.data)
+        else:
+            print("5555")
+            print("5555")
+            print("5555")
+            print("5555")
+            print("5555")
+            print("5555")
+            print("5555")
+            print("5555")
+            print("5555")
 
+            print("5555")
+            print("5555")
+            print("5555")
+            print("5555")
         db.session.add(new_product)
         db.session.commit()
 
