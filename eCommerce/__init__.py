@@ -16,16 +16,19 @@ from eCommerce.froms import AddProductForm
 
 @app.route("/")
 def home():
-    return render_template('home.html')
+    products = Product.query.all()
+    return render_template('home.html', products=products)
 
 @app.route("/about")
 def about():
+    return render_template('about.html', title='About')
 
-    products = Product.query.all()
-    return render_template('about.html', title='About', products=products)
 
-@app.route("/admin", methods=['GET', 'POST'])
-def admin():
+
+
+
+@app.route("/admin/add", methods=['GET', 'POST'])
+def addProduct():
 
     form = AddProductForm()
 
@@ -37,25 +40,11 @@ def admin():
                             )
         if form.picture.data:
             new_product.picture = renameAndSave(form.picture.data)
-        else:
-            print("5555")
-            print("5555")
-            print("5555")
-            print("5555")
-            print("5555")
-            print("5555")
-            print("5555")
-            print("5555")
-            print("5555")
 
-            print("5555")
-            print("5555")
-            print("5555")
-            print("5555")
         db.session.add(new_product)
         db.session.commit()
 
         form = AddProductForm(formdata=None)
         
-    return render_template('add_product.html', title='Admin', form=form)
+    return render_template('add_product.html', title='Add Product', form=form)
     
