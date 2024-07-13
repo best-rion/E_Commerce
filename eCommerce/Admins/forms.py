@@ -1,10 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms.validators import DataRequired, Length, ValidationError
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import IntegerField, StringField, FloatField, SubmitField
+from wtforms import StringField,SubmitField, FloatField, IntegerField
+from wtforms.validators import DataRequired, Length, ValidationError
 from eCommerce.models import Product
-
-
 
 def validate_unique_name(form, name_typed_into_form): # always give form, pore use hobe
    product_with_this_name = Product.query\
@@ -21,9 +19,4 @@ class AddProductForm(FlaskForm):
 
    stock = IntegerField("Quantity",  validators=[DataRequired()])
    picture = FileField("Insert Image", validators=[FileAllowed( ['jpg', 'png', 'jpeg'] )])
-   submit = SubmitField("Submit")
-
-
-class SearchForm(FlaskForm):  
-   search_term = StringField("Search", validators=[DataRequired(),Length(max=20)])
    submit = SubmitField("Submit")

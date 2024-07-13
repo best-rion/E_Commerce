@@ -3,7 +3,10 @@
     {{ form.hidden_tag() }}
     <div class="d-flex me-3 my-1">
     {{ form.search_term(class="form-control me-2" ) }}
-
-    {{ form.submit(class="btn btn-success") }}
+    {% if 'admins' in request.endpoint %}
+        {{ form.submit(class="btn btn-primary") }}
+    {% elif 'users' in request.endpoint %}
+        {{ form.submit(class="btn btn-success") }}
+    {% endif %}
     </div>
 </form>

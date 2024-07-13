@@ -47,9 +47,9 @@
                 {% for page in paginated_products.iter_pages(left_edge=1, left_current=1, right_edge=1, right_current=1) %}
                     {% if page %}
                         {% if paginated_products.page == page %}
-                            <a href="{{ url_for('home', page=page) }}" class="btn btn-success mx-2">{{ page }}</a>
+                            <a href="{{ url_for('users.home', page=page) }}" class="btn btn-success mx-2">{{ page }}</a>
                         {% else %}
-                            <a href="{{ url_for('home', page=page) }}" class="btn btn-outline-success mx-2">{{ page }}</a>
+                            <a href="{{ url_for('users.home', page=page) }}" class="btn btn-outline-success mx-2">{{ page }}</a>
                         {% endif %}
                     {% else %}
                         <span class="text-success">...</span>

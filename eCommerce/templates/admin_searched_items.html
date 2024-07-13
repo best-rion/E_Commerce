@@ -26,7 +26,7 @@
                 <td>{{ item.name }}</td>
                 <td>{{ item.stock }}</td>
                 <td>{{ item.price }}</td>
-                <td><a class="btn btn-outline-primary" href="{{url_for('updateProduct', id=item.id)}}">Edit</a></td>
+                <td><a class="btn btn-outline-primary" href="{{url_for('admins.updateProduct', id=item.id)}}">Edit</a></td>
             </tr>
         {% endfor %}
 
@@ -36,9 +36,9 @@
     {% for page in paginated_searched_items.iter_pages(left_edge=1, left_current=1, right_edge=1, right_current=1) %}
         {% if page %}
             {% if paginated_searched_items.page == page %}
-                <a href="{{ url_for('adminSearch', search_term=search_term, page=page) }}" class="btn btn-dark">{{ page }}</a>
+                <a href="{{ url_for('admins.adminSearch', search_term=search_term, page=page) }}" class="btn btn-dark">{{ page }}</a>
             {% else %}
-                <a href="{{ url_for('adminSearch', search_term=search_term, page=page) }}" class="btn btn-outline-dark">{{ page }}</a>
+                <a href="{{ url_for('admins.adminSearch', search_term=search_term, page=page) }}" class="btn btn-outline-dark">{{ page }}</a>
             {% endif %}
         {% else %}
             <span class="text-dark">...</span>
