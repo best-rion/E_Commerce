@@ -2,23 +2,18 @@
 
 {% block content %}
 
-    <!-- Header-->
-    <header class="bg-success py-5 mt-5">
-        <div class="container px-4 px-5 my-5">
-            <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Shop in style</h1>
-                <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-            </div>
-        </div>
-    </header>
+<div class="container mt-5 py-3">
 
+{% if paginated_searched_items.items%}
+
+    <h1 class="my-4">Results for "{{ search_term }}"</h1>
 
     <!-- Section-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
     
-                {% for product in paginated_products.items %}
+                {% for product in paginated_searched_items.items %}
     
                     <div class="col mb-5">
                         <div class="card h-100 bg-light">
@@ -44,12 +39,12 @@
             </div>
             <div class="container-fluid text-center">
 
-                {% for page in paginated_products.iter_pages(left_edge=1, left_current=1, right_edge=1, right_current=1) %}
+                {% for page in paginated_searched_items.iter_pages(left_edge=1, left_current=1, right_edge=1, right_current=1) %}
                     {% if page %}
-                        {% if paginated_products.page == page %}
-                            <a href="{{ url_for('home', page=page) }}" class="btn btn-success mx-2">{{ page }}</a>
+                        {% if paginated_searched_items.page == page %}
+                            <a href="{{ url_for('userSearch', search_term=search_term, page=page) }}" class="btn btn-success mx-2">{{ page }}</a>
                         {% else %}
-                            <a href="{{ url_for('home', page=page) }}" class="btn btn-outline-success mx-2">{{ page }}</a>
+                            <a href="{{ url_for('userSearch', search_term=search_term, page=page) }}" class="btn btn-outline-success mx-2">{{ page }}</a>
                         {% endif %}
                     {% else %}
                         <span class="text-success">...</span>
@@ -60,5 +55,11 @@
 
         </div>
     </section>
+
+    {% else %}
+        <h1 class="my-4">No item for "{{ search_term }}"</h1>
+    {% endif %}
+</div>
+
     
 {% endblock %}

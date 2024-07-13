@@ -1,7 +1,15 @@
 from eCommerce.models import Product
 from eCommerce import app, db
+import json
+
+with open("watches.json", "r") as json_file:
+    json_dictionary = json.load(json_file)
+
+watches = json_dictionary["list"]
 
 with app.app_context():
-    product1 = Product(name='Titan R-1320', price=701, stock=7)
-    db.session.add(product1)
+    for watch in watches:
+        product = Product(name=watch["name"], price=watch["price"], stock=watch["stock"])
+        db.session.add(product)
+    
     db.session.commit()

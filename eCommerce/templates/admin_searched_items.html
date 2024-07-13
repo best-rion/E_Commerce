@@ -3,7 +3,7 @@
 {% block content %}
 
 
-{% if items%}
+{% if paginated_searched_items.items%}
 
   <h1 class="my-4">Results for "{{ search_term }}"</h1>
 
@@ -20,7 +20,7 @@
     </thead>
 
     <tbody>
-        {% for item in items %}
+        {% for item in paginated_searched_items.items %}
             <tr id="divLink">
                 <th scope="row">{{ item.id }}</th>
                 <td>{{ item.name }}</td>
@@ -33,6 +33,17 @@
     </tbody>
 
   </table>
+    {% for page in paginated_searched_items.iter_pages(left_edge=1, left_current=1, right_edge=1, right_current=1) %}
+        {% if page %}
+            {% if paginated_searched_items.page == page %}
+                <a href="{{ url_for('adminSearch', search_term=search_term, page=page) }}" class="btn btn-dark">{{ page }}</a>
+            {% else %}
+                <a href="{{ url_for('adminSearch', search_term=search_term, page=page) }}" class="btn btn-outline-dark">{{ page }}</a>
+            {% endif %}
+        {% else %}
+            <span class="text-dark">...</span>
+        {% endif %}
+    {% endfor %}
 
 {% else %}
     <h1 class="my-4">No item for "{{ search_term }}"</h1>
