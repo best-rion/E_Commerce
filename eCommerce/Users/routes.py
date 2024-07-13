@@ -3,7 +3,8 @@ from eCommerce.models import Product
 from eCommerce.common_froms import SearchForm
 
 
-users = Blueprint('users', __name__)
+users = Blueprint('users', __name__,
+                  template_folder='templates')
 
 
 @users.route("/search/<string:search_term>", methods=['GET', 'POST'])

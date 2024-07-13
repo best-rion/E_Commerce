@@ -4,8 +4,9 @@ from eCommerce.models import Product, Admin
 from eCommerce.Admins.forms import AddProductForm
 from eCommerce.common_froms import SearchForm
 from eCommerce.Admins.utils import renameAndSave
+import os
 
-admins = Blueprint('admins', __name__)
+admins = Blueprint('admins', __name__, template_folder='templates')
 
 @admins.route("/admin/search/<string:search_term>")
 def adminSearch(search_term):
