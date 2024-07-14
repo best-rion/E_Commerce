@@ -1,0 +1,80 @@
+{% for product in paginated_products.items %}
+
+    <div class="col mb-5">
+        <div class="card h-100">
+            <div class="row">
+                <div class="col-2"></div>
+                <!-- Product image-->
+                    <div class="col-8 mt-1" style="text-align: center;">
+                    <img class="img-fluid" src=" {{ url_for('static', filename = 'images/' + product.picture) }} " alt="..." />
+                    </div>
+                <div class="col-2"></div>
+            </div>
+            <!-- Product details-->
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <!-- Product name-->
+                    <h5 class="fw-bolder">{{ product.name }}</h5>
+                    <h6 class="fw-bolder text-secondary" style="font-size: 12px;">{{ product.detail }}</h6>
+                    <!-- Product price-->
+                    
+                    <b class="text-success" style="font-size: 25px;"><span class="currency">{{ product.price }}</span> </b>
+
+                </div>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <form id="cartForm-{{product.id}}" class="mt-auto text-center">
+                    <input type="hidden" name="product_id" value="{{product.id}}">
+                    <input type="submit" class="btn btn-outline-success" value="Add to cart">
+                </form>
+
+                <script>
+                    $(document).ready(function() {
+                       $('#cartForm-{{product.id}}').submit(function(event) {
+                          event.preventDefault();
+                          $.ajax({
+                             type: 'POST',
+                             url: '/cart',
+                             data: $('#cartForm-{{product.id}}').serialize(),
+                             success: function() {
+
+                                $numberOfItems = parseInt( $('#numberOfItems').text() ) + 1
+
+                                $('#numberOfItems').html( $numberOfItems.toString() ) 
+                             }
+                          });
+                       });
+                    });
+                 </script>
+
+            </div>
+        </div>
+    </div>
+
+{% endfor %}
+
+
+
+
+<!-- Converting price to currency -->
+<script>
+        
+    currency_elements = document.getElementsByClassName('currency')
+
+    // Create our number formatter.
+    const formatter = new Intl.NumberFormat(undefined, {
+        currencyDisplay: "narrowSymbol",
+        style: 'currency',
+        currency: 'BDT',
+        maximumFractionDigits: 0,
+        // These options are needed to round to whole numbers if that's what you want.
+        //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+        //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+    });
+    
+    for(var i=0; i<currency_elements.length; i++){
+        currency_elements[i].innerText = formatter.format(currency_elements[i].innerText)
+    }
+
+</script>

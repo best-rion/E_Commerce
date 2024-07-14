@@ -11,14 +11,14 @@ users = Blueprint('users', __name__,
 def userSearch(search_term):
     
     page = request.args.get('page',1,type=int)
-    paginated_searched_items = Product.query.filter(Product.name.contains(search_term)).filter(Product.stock>0).order_by(Product.id.desc()).paginate(page=page, per_page=20)
+    paginated_products = Product.query.filter(Product.name.contains(search_term)).filter(Product.stock>0).order_by(Product.id.desc()).paginate(page=page, per_page=20)
 
     form = SearchForm()
     if form.validate_on_submit():
         return redirect(url_for('users.userSearch', search_term=form.search_term.data))
 
     return render_template('user_searched_items.html', title='Searched Items', form=form,
-                            paginated_searched_items=paginated_searched_items, search_term=search_term)
+                            paginated_products=paginated_products, search_term=search_term)
 
 
 
@@ -40,3 +40,11 @@ def home():
 @users.route("/about")
 def about():
     return render_template('about.html', title='About')
+
+@users.route("/cart", methods=['POST'])
+def cart():
+    product_id = request.form['product_id'] # 'product_id' corresponds to the name inside <input name='product_id'  ......>
+    print(product_id)
+
+    return "Added to cart successfully"
+    

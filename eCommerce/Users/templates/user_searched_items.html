@@ -4,7 +4,7 @@
 
 <div class="container mt-5 py-3">
 
-{% if paginated_searched_items.items%}
+{% if paginated_products.items%}
 
     <h1 class="my-4">Results for "{{ search_term }}"</h1>
 
@@ -13,35 +13,14 @@
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
     
-                {% for product in paginated_searched_items.items %}
-    
-                    <div class="col mb-5">
-                        <div class="card h-100 bg-light">
-                            <!-- Product image-->
-                            <img class="card-img-top" src=" {{ url_for('static', filename = 'images/' + product.picture) }} " alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">{{ product.name }}</h5>
-                                    <!-- Product price-->
-                                    ${{ product.price }}
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-success mt-auto" href="#">View options</a></div>
-                            </div>
-                        </div>
-                    </div>
-    
-                {% endfor %}
+                {% include "products.html" %}
+
             </div>
             <div class="container-fluid text-center">
 
-                {% for page in paginated_searched_items.iter_pages(left_edge=1, left_current=1, right_edge=1, right_current=1) %}
+                {% for page in paginated_products.iter_pages(left_edge=1, left_current=5, right_edge=1, right_current=5) %}
                     {% if page %}
-                        {% if paginated_searched_items.page == page %}
+                        {% if paginated_products.page == page %}
                             <a href="{{ url_for('users.userSearch', search_term=search_term, page=page) }}" class="btn btn-success mx-2">{{ page }}</a>
                         {% else %}
                             <a href="{{ url_for('users.userSearch', search_term=search_term, page=page) }}" class="btn btn-outline-success mx-2">{{ page }}</a>
