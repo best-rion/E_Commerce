@@ -24,6 +24,21 @@
                     {% endif %}
                 </div>
                 <div class="form-group">
+                    {{ form.detail.label(class="form-control-label") }}
+    
+                    {% if form.detail.errors %}
+    
+                        {{ form.detail(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.detail.errors %}
+                                <span> {{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.detail(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
                     {{ form.price.label(class="form-control-label") }}
     
                     {% if form.price.errors %}
@@ -70,7 +85,7 @@
                 </div>
             </fieldset>
     
-            <div class=" form-group mt-3">{{ form.submit(class='btn btn-outline-info') }}</div>
+            <div class=" form-group mt-3">{{ form.submit(class='btn btn-primary') }}</div>
         </form>
     </div>
 

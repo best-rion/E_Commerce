@@ -13,6 +13,7 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Name</th>
+            <th scope="col">Detail</th>
             <th scope="col">Stock</th>
             <th scope="col">Price</th>
             <th scope="col"></th>
@@ -22,8 +23,9 @@
     <tbody>
         {% for item in paginated_searched_items.items %}
             <tr id="divLink">
-                <th scope="row">{{ item.id }}</th>
+                <td scope="row">{{ item.id }}</td>
                 <td>{{ item.name }}</td>
+                <td>{{ item.detail }}</td>
                 <td>{{ item.stock }}</td>
                 <td>{{ item.price }}</td>
                 <td><a class="btn btn-outline-primary" href="{{url_for('admins.updateProduct', id=item.id)}}">Edit</a></td>

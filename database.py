@@ -9,7 +9,7 @@ watches = json_dictionary["list"]
 
 with app.app_context():
     for watch in watches:
-        product = Product(name=watch["name"], price=watch["price"], stock=watch["stock"])
+        product = Product(name=watch["name"], detail=watch["detail"], price=watch["price"], picture=watch["picture"], stock=watch["stock"])
         db.session.add(product)
     
     db.session.commit()

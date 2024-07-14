@@ -4,5 +4,5 @@ from wtforms import StringField, SubmitField
 
 
 class SearchForm(FlaskForm):  
-   search_term = StringField("Search", validators=[DataRequired(),Length(max=20)])
+   search_term = StringField("Search by name", validators=[DataRequired(),Length(max=20)])
    submit = SubmitField("Submit")

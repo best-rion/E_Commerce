@@ -11,7 +11,7 @@ users = Blueprint('users', __name__,
 def userSearch(search_term):
     
     page = request.args.get('page',1,type=int)
-    paginated_searched_items = Product.query.filter(Product.name.contains(search_term)).filter(Product.stock>0).paginate(page=page, per_page=20)
+    paginated_searched_items = Product.query.filter(Product.name.contains(search_term)).filter(Product.stock>0).order_by(Product.id.desc()).paginate(page=page, per_page=20)
 
     form = SearchForm()
     if form.validate_on_submit():
@@ -28,7 +28,7 @@ def home():
     # Search bar
 
     page = request.args.get('page', 1, type=int)
-    paginated_products = Product.query.filter(Product.stock>0).paginate(page=page, per_page=20)
+    paginated_products = Product.query.filter(Product.stock>0).order_by(Product.id.desc()).paginate(page=page, per_page=20)
 
     form = SearchForm()
     if form.validate_on_submit():
