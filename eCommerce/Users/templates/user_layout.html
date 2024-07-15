@@ -32,17 +32,17 @@
                     </ul>
                      <!-- Search Bar -->
 
-                    {% if  request.endpoint == 'users.home'  or request.endpoint == 'users.userSearch'  %}
+                    {% if  request.endpoint != 'users.about'  %}
                         {% include 'search_bar.html' %}
+
+                    <a class="btn btn-outline-success my-1 d-flex"  href="{{ url_for('users.cart') }}">
+                        <i class="bi-cart-fill me-1"></i>
+                        Cart
+                        <span class="badge bg-success text-white ms-1 rounded-pill my-auto" id="numberOfItems">{{ numberOfItems }}</span>
+                    </a>
+
                     {% endif %}
 
-                    <form class="d-flex">
-                        <button class="btn btn-outline-success my-1" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-success text-white ms-1 rounded-pill" id="numberOfItems">0</span>
-                        </button>
-                    </form>
                     <ul class="navbar-nav mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="#">login</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Register</a></li>
@@ -51,9 +51,10 @@
                 </div>
             </div>
         </nav>
+        <div class="container-fluid my-5">
+            {% block content %}{% endblock %}
+        </div>
 
-
-        {% block content %}{% endblock %}
 
 
         <!-- Footer-->

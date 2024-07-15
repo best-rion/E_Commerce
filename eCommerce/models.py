@@ -16,3 +16,8 @@ class Product(db.Model):
     picture: Mapped[str] = mapped_column(String(25),nullable=False, default='default.jpg')
     stock: Mapped[int] = mapped_column(Integer, nullable=False)
 
+# class User(db.Model):
+#     id: Mapped[int] = mapped_column(primary_key=True)
+#     name: Mapped[str] = mapped_column(String(20), unique=True, nullable=False)
+#     email: Mapped[str] = mapped_column(String(30), unique=True, nullable=False)
+#     password: Mapped[str] = mapped_column(String(20), nullable=False)
