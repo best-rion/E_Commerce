@@ -1,3 +1,3 @@
 # E_Commerce
 
-An E-commerce backend using Python Flask.
+A full featured E-commerce website with Frontend, Backend and Database using Python Flask.
