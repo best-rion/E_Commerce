@@ -32,7 +32,7 @@
                     </ul>
                      <!-- Search Bar -->
 
-                    {% if  request.endpoint != 'users.about'  %}
+                    {% if  request.endpoint != 'users.about' and request.endpoint != 'users.pay' %}
                         {% include 'search_bar.html' %}
 
                     <a class="btn btn-outline-success my-1 d-flex"  href="{{ url_for('users.cart') }}">

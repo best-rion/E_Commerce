@@ -1,6 +1,7 @@
 from flask import Blueprint,render_template, redirect, request, url_for, flash
 from eCommerce.models import Product
 from eCommerce.common_froms import SearchForm
+import json
 
 
 users = Blueprint('users', __name__,
@@ -23,11 +24,6 @@ class UserClass:
             self.cart.append(product_id)
             self.quantity_list.append(UserClass.default_quantity)
             self.numberOfItems += 1 #one product was added
-
-        else:
-            
-            index = self.cart.index(product_id)
-            self.quantity_list[index] += 1
 
     def updateCart(self, index, sign):
 
@@ -65,9 +61,11 @@ def userSearch(search_term):
     form = SearchForm()
     if form.validate_on_submit():
         return redirect(url_for('users.userSearch', search_term=form.search_term.data,  numberOfItems=test_user.numberOfItems))
+    
+    items_in_cart = test_user.cart
 
     return render_template('user_searched_items.html', title='Searched Items', form=form,
-                            paginated_products=paginated_products, search_term=search_term, numberOfItems=test_user.numberOfItems)
+                            paginated_products=paginated_products, search_term=search_term, numberOfItems=test_user.numberOfItems, items_in_cart=items_in_cart)
 
 
 
@@ -82,7 +80,10 @@ def home():
     if form.validate_on_submit():
         return redirect(url_for('users.userSearch', search_term=form.search_term.data,  numberOfItems=test_user.numberOfItems))
     
-    return render_template('home.html', paginated_products=paginated_products, form=form,   numberOfItems=test_user.numberOfItems)
+
+    items_in_cart = test_user.cart
+    
+    return render_template('home.html', paginated_products=paginated_products, form=form,   numberOfItems=test_user.numberOfItems, items_in_cart=items_in_cart)
 
 @users.route("/about")
 def about():
@@ -105,36 +106,33 @@ def cart():
     form = SearchForm()
     if form.validate_on_submit():
         return redirect(url_for('users.userSearch', search_term=form.search_term.data,  numberOfItems=test_user.numberOfItems))
-    
-
 
     products = []
+    total = 0
 
-    for product_id in test_user.cart:
-        products.append(Product.query.get(product_id))
+    for i in range( len(test_user.cart) ):
 
-    return render_template('user_cart.html',  form=form,   numberOfItems=test_user.numberOfItems, products=products, quantity_list=test_user.quantity_list)
+        product = Product.query.get(test_user.cart[i])
+        products.append(product)
+
+        total += product.price * test_user.quantity_list[i]
+
+    return render_template('user_cart.html',  form=form,   numberOfItems=test_user.numberOfItems,
+                            products=products, quantity_list=test_user.quantity_list, total=total)
 
 
-@users.route("/actionInCart", methods=['POST'])
-def actionInCart():
+@users.route("/actionInCart/<int:index>/<string:sign>", methods=['POST'])
+def actionInCart(index, sign):
     global test_user
 
-    sign = request.form['sign']
-    index = int(request.form['index'])-1
 
-
-
+    index = index-1
 
 
     test_user.updateCart(index=index, sign=sign)
 
-    print(sign)
-    print(index)
-    print('\n')
 
-    return "Cart updated successfully"
-
+    return redirect(url_for('users.cart'))
 
 
 @users.route("/deleteInCart", methods=['POST'])
@@ -148,4 +146,10 @@ def deleteInCart():
     test_user.deleteFromCart(index=index)
 
     return redirect(url_for('users.cart'))
+
+
+
+@users.route("/pay", methods=['GET'])
+def pay():
+    return render_template('pay.html')
     

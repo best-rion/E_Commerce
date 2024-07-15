@@ -1,4 +1,11 @@
+<script>
+
+    var list_of_items_in_cart = JSON.parse('{{ items_in_cart | tojson }}')
+
+</script>
+
 {% for product in paginated_products.items %}
+
 
     <div class="col mb-5">
         <div class="card h-100">
@@ -30,6 +37,7 @@
                 </form>
 
                 <script>
+
                     $(document).ready(function() {
                        $('#cartForm-{{product.id}}').submit(function(event) {
                           event.preventDefault();
@@ -39,9 +47,19 @@
                              data: $('#cartForm-{{product.id}}').serialize(),
                              success: function() {
 
-                                $numberOfItems = parseInt( $('#numberOfItems').text() ) + 1
+                                console.log('list_of_items_in_cart = ', list_of_items_in_cart )
+                                product_id_string =  '{{product.id}}' // product id is constant that is why i can take it as string
+                                // it comes as a string from python
 
-                                $('#numberOfItems').html( $numberOfItems.toString() ) 
+                                if(  ! list_of_items_in_cart.includes(product_id_string) ){
+
+                                    list_of_items_in_cart.push(product_id_string)
+
+                                    $numberOfItems = parseInt( $('#numberOfItems').text() ) + 1 // numberOfItems is constantly changing in 
+                                                                                                //JavaScript is constan that is why i take it from HTML
+                                    $('#numberOfItems').html( $numberOfItems.toString() ) 
+                                }
+
                              }
                           });
                        });
