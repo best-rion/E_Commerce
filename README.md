@@ -12,3 +12,28 @@ And there is more. This E-commerce website, I decided to make it a watch shop, j
 I used Sqlite database for this project, simply because it is my first time with database and I watched it on the tutorial. 
 
 There is again one more challenge I faced while trying to modify the model. The thing is, at first I made 'name' column with unique constrain. Later I had to change the constrain, but it is very difficult to change constrains in Sqlite database. So in a forum, I found a solution, Sqlite DB Browser. It is basically a GUI for Sqlite database and very helpful. I changed the unique constrain easily with its help.
+
+
+    HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+    HHHHHHHHHHHHHHH  ,  ,  ,  ,   HHHHHHHHHHHHHHH
+    HHHHHHHHHHHH  ,  HHHHHHHHHHH  ,  HHHHHHHHHHHH
+    HHHHHHHHHH ,  HHHHHHHHHHHHHHHHH  , HHHHHHHHHH
+    HHHHHHHH , HHHHHHHHHHHHHHHHHHHHHHH , HHHHHHHH
+    HHHHHH , HHHHHHHHHHHHHHHHHHHHHHHHHHh , HHHHHH
+    HHHHH , HHHHHHHHHHHHHHHHHHHHHHHHHHHHH , HHHHH
+    HHHH , HHHHHHHHH   HHHHHHHHHH   HHHHHH , HHHH
+    HHHH , HHHHHHHHH   HHHHHHHHHh   HHHHHH , HHHH
+    HHHH , HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH , HHHH
+    HHHH , HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH , HHHH
+    HHHH , HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH , HHHH
+    HHHHH , HHHHHHHHHH**HHHHHHH**HHHHHHHH , HHHHH
+    HHHHHH , HHHHHHHHHH_________HHHHHHH , HHHHHHH
+    HHHHHHHH , HHHHHHHHHHHHHHHHHHHHHHH , HHHHHHHH
+    HHHHHHHHHH , HHHHHHHHHHHHHHHHHH , HHHHHHHHHHH
+    HHHHHHHHHHHH ,  HHHHHHHHHHHHH , HHHHHHHHHHHHH
+    HHHHHHHHHHHHH , HHHHHHHHHHHHH , HHHHHHHHHHHHH
+    HHHHHHHHHHHH , HHHHHHHHHHHHHHH , HHHHHHHHHHHH
+    HHHHHHHHHH , HHHHHHHHHHHHHHHHHHH , HHHHHHHHHH
+    HHHHHHHH , HHHHHHHHHHHHHHHHHHHHHHH , HHHHHHHH
+    HHHHHH , HHHHHHHHHHHHHHHHHHHHHHHHHHH ,  HHHHH
+    HHH , HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH , HHH
