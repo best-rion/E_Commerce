@@ -4,7 +4,7 @@ Clone the repository.
 
 Create a virtual environment. And install requirements.txt
 
-type "python3 run.py" in terminal and press ENTER.
+Type "python3 run.py" in your terminal and press ENTER.
 
 
     HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
