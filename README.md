@@ -1,4 +1,4 @@
-# E_Commerce
+# E_Commerce (python flask)
 
 Clone the repository.
 
