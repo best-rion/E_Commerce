@@ -1,5 +1,4 @@
-# E_Commerce (python flask)
-
+An Ecommerce backend with python Flask
 Clone the repository.
 
 Create a virtual environment. And install requirements.txt
