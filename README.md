@@ -1,35 +1,3 @@
 An Ecommerce backend with python Flask
-Clone the repository.
 
-Create a virtual environment. And install requirements.txt
-
-Type "python3 run.py" in your terminal and press ENTER.
-
-
-    HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-    HHHHHHHHHHHHHHH  ,  ,  ,  ,   HHHHHHHHHHHHHHH
-    HHHHHHHHHHHH  ,  HHHHHHHHHHH  ,  HHHHHHHHHHHH
-    HHHHHHHHHH ,  HHHHHHHHHHHHHHHHH  , HHHHHHHHHH
-    HHHHHHHH , HHHHHHHHHHHHHHHHHHHHHHH , HHHHHHHH
-    HHHHHH , HHHHHHHHHHHHHHHHHHHHHHHHHHh , HHHHHH
-    HHHHH , HHHHHHHHHHHHHHHHHHHHHHHHHHHHH , HHHHH
-    HHHH , HHHHHHHHH   HHHHHHHHHH   HHHHHH , HHHH
-    HHHH , HHHHHHHHH   HHHHHHHHHh   HHHHHH , HHHH
-    HHHH , HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH , HHHH
-    HHHH , HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH , HHHH
-    HHHH , HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH , HHHH
-    HHHHH , HHHHHHHHHH**HHHHHHH**HHHHHHHH , HHHHH
-    HHHHHH , HHHHHHHHHH_________HHHHHHH , HHHHHHH
-    HHHHHHHH , HHHHHHHHHHHHHHHHHHHHHHH , HHHHHHHH
-    HHHHHHHHHH , HHHHHHHHHHHHHHHHHH , HHHHHHHHHHH
-    HHHHHHHHHHHH ,  HHHHHHHHHHHHH , HHHHHHHHHHHHH
-    HHHHHHHHHHHHH , HHHHHHHHHHHHH , HHHHHHHHHHHHH
-    HHHHHHHHHHHH , HHHHHHHHHHHHHHH , HHHHHHHHHHHH
-    HHHHHHHHHH , HHHHHHHHHHHHHHHHHHH , HHHHHHHHHH
-    HHHHHHHH , HHHHHHHHHHHHHHHHHHHHHHH , HHHHHHHH
-    HHHHHH , HHHHHHHHHHHHHHHHHHHHHHHHHHH ,  HHHHH
-    HHH , HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH , HHH
-
-
-
-To make it look like a real E-commerce site, I scrapped thumbnails, names, prices and images from "timezonebd.com" with BeautifulSoup4, saved informations in JSON file and saved images in "static/images/" folder.
+To make it look like a real E-commerce site, I scrapped thumbnails, names, prices and images from "timezonebd.com" with BeautifulSoup4, saved informations in JSON file and downloaded images using requests.
